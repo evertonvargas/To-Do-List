@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>To-Do-List</title>
+  </head>
+  <body>
+    <div class="content">
+    <div id="day">
+      <h1><%= kindofday %></h1>
+    </div>
+    <div class="boxes">
+      <ul>
+        <%for(let data of newListItem){%>
+            <li><input type="checkbox"><p><%= data %></p></li>
+        <%}%>
+      </ul>
+      <form action="/" method="POST">
+        <input type="text" name="newItem" placeholder="New item" autocomplete="off"/>
+        <button type="submit"><a>+</a></button>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>
