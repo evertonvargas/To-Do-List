@@ -37,10 +37,10 @@ function insert() {
 }
 
 app.get("/", (req, res) => {
-  Item.find({}, (err, foundItems) => {
+  Item.find({}, async function (err, foundItems) {
     if (foundItems.length === 0) {
-      insert();
-      res.redirect("/")
+      await insert();
+      res.redirect("/");
     } else {
       res.render("list", {
         listTitle: date.getDate(),
@@ -51,14 +51,22 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  let item = req.body.newItem;
-  if (req.body.list === "Work list") {
-    workItems.push(item);
-    res.redirect("/work");
-  } else {
-    items.push(item);
-    res.redirect("/");
-  }
+  let itemName = req.body.newItem;
+
+  const item = new Item({ name: itemName });
+  item.save();
+  res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+  Item.findByIdAndRemove(req.body.checkbox, function(err){
+    if(!err){
+      console.log("Item deletado com sucesso")
+      res.redirect("/");
+    }else{
+      console.log(err)
+    }
+  })
 });
 
 app.get("/work", (req, res) => {

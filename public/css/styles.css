@@ -82,6 +82,7 @@ button a{
     color: #fff;
     font-size: 35px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 ::placeholder {

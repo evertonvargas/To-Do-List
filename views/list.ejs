@@ -6,12 +6,17 @@
     <div class="boxes">
       <ul>
         <%for(let data of newListItem){%>
-            <li><input type="checkbox"><p><%= data.name %></p></li>
+          <form action="/delete" method="POST">
+            <li>
+              <input type="checkbox" name="checkbox" value="<%=data._id%>" onchange="this.form.submit()">
+              <p><%= data.name %></p>
+            </li>
+          </form>
         <%}%>
       </ul>
       <form action="/" method="POST">
         <input type="text" name="newItem" placeholder="New item" autocomplete="off"/>
-        <button type="submit" name="list" value="<%= listTitle %>"><a>+</a></button>
+        <button type="submit" name="list"><a>+</a></button>
       </form>
     </div>
   </div>
