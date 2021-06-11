@@ -54,7 +54,12 @@ html {
     align-items: center;
 }
 
-form{
+ul form{
+    min-height: 50px;
+    padding: 10px 20px;
+}
+
+.newItem{
     display: flex;
     min-height: 50px;
     padding: 10px 20px;
